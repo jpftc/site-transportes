@@ -26,7 +26,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Villa Transporte</a>
+            <a class="navbar-brand" href="/">Villa Transporte</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -38,13 +38,13 @@
             </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Empresa</a>
+                        <a class="nav-link" href="/company">Empresa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Serviços</a>
+                        <a class="nav-link" href="/services">Serviços</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contato</a>
+                        <a class="nav-link" href="/contact">Contato</a>
                     </li>
                 </ul>
             </div>
@@ -71,7 +71,7 @@
             <div class="card-header">
                 <h1>Preencha o formulário, em breve entraremos em contato!</h1>
             </div>
-            <form method="POST" action="">
+            <form method="POST" action="/sendform">
                 <div class="card-body">
                     <h3>Seus dados</h3>
                     <label for="name">Nome*</label>
@@ -79,7 +79,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="name">Telefone*</label>
-                            <input class="form-control" name="tel" id="tel" type="text" required><br>
+                            <input class="form-control" name="tel" id="tel" type="text" maxlength="15" placeholder="(__) _____-____" required><br>
                         </div>
                         <div class="col">
                             <label for="name">E-mail</label>
@@ -89,29 +89,30 @@
                 </div>
                 <div class="card-body">
                     <h3>Informações sobre o carreto</h3>
-                    <label for="name">Endereço* <small>Origem</small></label>
+                    <label for="address">Endereço* <small>Origem</small></label>
                     <input class="form-control" name="address" id="address" type="text" required><br>
                     <div class="row">
                         <div class="col">
-                            <label for="name">Número* <small>Origem</small></label>
-                            <input class="form-control" name="number" id="number" type="text" required><br>
+                            <label for="address2">Número* <small>Origem</small></label>
+                            <input class="form-control" name="address2" id="address2" type="text" required><br>
                         </div>
                         <div class="col">
-                            <label for="name">CEP <small>Origem</small></label>
-                            <input class="form-control" name="cep" id="cep" type="number"><br>
+                            <label for="address3">CEP <small>Origem</small></label>
+                            <input class="form-control" name="address3" id="address3" type="number"><br>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
-                            <label for="state">Estado* <small>Origem</small></label>
-                            <select class="form-control" name="state" id="state">
+                            <label for="uf">Estado* <small>Origem</small></label>
+                            <select class="form-control" name="uf" id="uf" required>
                             <option value="0">Selecione seu estado</option>
+                            <input type="text" name="state" hidden>
                         </select>
                         </div>
                         <div class="col">
                             <label for="city">Cidade* <small>Origem</small></label>
-                            <select class="form-control" name="city" id="city">
+                            <select class="form-control" name="city" id="city" required disabled>
                             <option value="0">Selecione sua cidade</option>
                         </select>
                         </div>
@@ -119,26 +120,111 @@
 
                     <div class="row">
                         <div class="col">
-                            <label for="source">Origem*</label>
-                            <select class="form-control" name="source" id="source">
-                                <option value="">Selecione uma opção</option>
-                                <option value="">Casa Térrea</option>
-                                <option value="">Casa com Escada</option>
-                                <option value="">Sobrado</option>
-                                <option value="">Assobradado</option>
-                                <option value="">Apto. com elevador</option>
-                                <option value="">Apto. sem elevador</option>
-                                <option value="">Guarda Móveis</option>
+                            <label for="subject">Origem*</label>
+                            <select class="form-control" name="subject" id="subject" required>
+                                <option value="Selecione uma opção">Selecione uma opção</option>
+                                <option value="Casa Térrea">Casa Térrea</option>
+                                <option value="Casa com Escada">Casa com Escada</option>
+                                <option value="Sobrado">Sobrado</option>
+                                <option value="Assobradado">Assobradado</option>
+                                <option value="Apto. com elevador">Apto. com elevador</option>
+                                <option value="Apto. sem elevador">Apto. sem elevador</option>
+                                <option value="Guarda Móveis">Guarda Móveis</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="floor">Andar* <small>Origem</small></label>
-                            <input class="form-control" name="floor" id="floor" type="number">
+                            <input class="form-control" name="floor" id="floor" type="number" disabled required>
                         </div>
                     </div>
                     <hr>
                     <hr>
+                    <label for="addressdest">Endereço* <small>Destino</small></label>
+                    <input class="form-control" name="addressdest" id="addressdest" type="text" required><br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="address2dest">Número* <small>Destino</small></label>
+                            <input class="form-control" name="address2dest" id="address2dest" type="text" required><br>
+                        </div>
+                        <div class="col">
+                            <label for="address3dest">CEP <small>Destino</small></label>
+                            <input class="form-control" name="address3dest" id="address3dest" type="number"><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="ufdest">Estado* <small>Destino</small></label>
+                            <select class="form-control" name="ufdest" id="ufdest" required>
+                            <option value="0">Selecione seu estado</option>
+                            <input type="text" name="statedest" hidden>
+                        </select>
+                        </div>
+                        <div class="col">
+                            <label for="citydest">Cidade* <small>Destino</small></label>
+                            <select class="form-control" name="citydest" id="citydest" required disabled>
+                            <option value="0">Selecione sua cidade</option>
+                        </select>
+                        </div>
+                    </div><br>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="subject2">Destino*</label>
+                            <select class="form-control" name="subject2" id="subject2" required>
+                                <option value="Selecione uma opção">Selecione uma opção</option>
+                                <option value="Casa Térrea">Casa Térrea</option>
+                                <option value="Casa com Escada">Casa com Escada</option>
+                                <option value="Sobrado">Sobrado</option>
+                                <option value="Assobradado">Assobradado</option>
+                                <option value="Apto. com elevador">Apto. com elevador</option>
+                                <option value="Apto. sem elevador">Apto. sem elevador</option>
+                                <option value="Guarda Móveis">Guarda Móveis</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="floordest">Andar* <small>Destino</small></label>
+                            <input class="form-control" name="floordest" id="floordest" type="number" disabled required>
+                        </div>
+                    </div><br>
+                    <label for="bio">Lista de itens para o transporte* <small>Ex. “sofá três lugares”, “6 caixas
+                        grandes”, “geladeira pequena”</small></label>
+                    <textarea class="form-control" name="bio" id="bio" cols="30" rows="10" required></textarea>
                 </div>
+                <div class="card-body">
+                    <h3>Informações adicionais</h3>
+                    <div class="row">
+                        <div class="col">
+                            <label for="ajudantes">Ajudantes*</label>
+                            <select class="form-control" name="ajudantes" id="ajudantes" required>
+                                <option value="0">Selecione uma opção</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="qtdeajudantes">Qtde. Ajudantes*</label>
+                            <select class="form-control" name="qtdeajudantes" id="qtdeajudantes" disabled required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div><br>
+                    <label for="packing">Serviço de embalagem*</label>
+                    <select class="form-control" name="packing" id="packing" required>
+                        <option value="0">Selecione uma opção</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select><br>
+                    <label for="escadas">Quantos lances de escada?* <small>incluindo origem e destino (Somente
+                        números)</small></label>
+                    <input class="form-control" name="escadas" id="escadas" type="number">
+                </div>
+
+                <div class="card-body">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
+                </div>
+
             </form>
         </div>
 
@@ -148,7 +234,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Villa Transporte 2020</p>
         </div>
         <!-- /.container -->
     </footer>
@@ -156,6 +242,171 @@
     <!-- Bootstrap core JavaScript -->
     <script src="/jquery/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function populateUfs() {
+            const ufSelect = document.querySelector("select[name=uf]")
+            const ufSelectDest = document.querySelector("select[name=ufdest]")
+
+            fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
+                .then((res) => {
+                    return res.json()
+                })
+                .then(states => {
+
+                    for (const state of states) {
+                        ufSelect.innerHTML += `<option value="${state.id}">${state.nome}</option>`
+                        ufSelectDest.innerHTML += `<option value="${state.id}">${state.nome}</option>`
+                    }
+
+                })
+        }
+
+        populateUfs()
+    </script>
+
+    <script>
+        function getCities(event) {
+            const citySelect = document.querySelector("select[name=city]")
+            const stateInput = document.querySelector("input[name=state]")
+
+            const ufValue = event.target.value
+
+            const indexOfSelectedState = event.target.selectedIndex
+            stateInput.value = event.target.options[indexOfSelectedState].text
+
+            const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`
+
+            citySelect.innerHTML = "<option value>Selecione a Cidade</option>"
+            citySelect.disabled = true
+
+            fetch(url)
+                .then((res) => {
+                    return res.json()
+                })
+                .then(cities => {
+
+
+                    for (const city of cities) {
+                        citySelect.innerHTML += `<option value="${city.nome}">${city.nome}</option>`
+                    }
+
+                    citySelect.disabled = false
+                })
+        }
+
+        function getCities2(event) {
+            const citySelect = document.querySelector("select[name=citydest]")
+            const stateInput = document.querySelector("input[name=statedest]")
+
+            const ufValue = event.target.value
+
+            const indexOfSelectedState = event.target.selectedIndex
+            stateInput.value = event.target.options[indexOfSelectedState].text
+
+            const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`
+
+            citySelect.innerHTML = "<option value>Selecione a Cidade</option>"
+            citySelect.disabled = true
+
+            fetch(url)
+                .then((res) => {
+                    return res.json()
+                })
+                .then(cities => {
+
+
+                    for (const city of cities) {
+                        citySelect.innerHTML += `<option value="${city.nome}">${city.nome}</option>`
+                    }
+
+                    citySelect.disabled = false
+                })
+        }
+
+
+        document
+            .querySelector("select[name=uf]")
+            .addEventListener("change", getCities)
+
+        document
+            .querySelector("select[name=ufdest]")
+            .addEventListener("change", getCities2)
+    </script>
+
+    <script>
+        function mascara(o, f) {
+            v_obj = o
+            v_fun = f
+            setTimeout("execmascara()", 1)
+        }
+
+        function execmascara() {
+            v_obj.value = v_fun(v_obj.value)
+        }
+
+        function mtel(v) {
+            v = v.replace(/\D/g, ""); //Remove tudo o que não é dígito
+            v = v.replace(/^(\d{2})(\d)/g, "($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+            v = v.replace(/(\d)(\d{4})$/, "$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+            return v;
+        }
+
+        function id(el) {
+            return document.getElementById(el);
+        }
+        window.onload = function() {
+            id('tel').onkeyup = function() {
+                mascara(this, mtel);
+            }
+        }
+    </script>
+
+    <script>
+        function helperQuestion() {
+            var helperAnswer = document.querySelector("select[name=ajudantes]").value
+            var helper = document.querySelector("select[name=qtdeajudantes]")
+            if (helperAnswer != "Sim") {
+                helper.disabled = true
+            } else {
+                helper.disabled = false
+            }
+        }
+
+        document
+            .querySelector("select[name=ajudantes]")
+            .addEventListener("change", helperQuestion)
+    </script>
+
+    <script>
+        function apartment() {
+            var apto = document.querySelector("select[name=subject]").selectedIndex
+            var aptoNum = document.querySelector("input[name=floor]")
+            if (apto == 5 || apto == 6) {
+                aptoNum.disabled = false
+            } else {
+                aptoNum.disabled = true
+            }
+        }
+
+        document
+            .querySelector("select[name=subject]")
+            .addEventListener("change", apartment)
+
+        function apartmentDest() {
+            var aptoDest = document.querySelector("select[name=subject2]").selectedIndex
+            var aptoNumDest = document.querySelector("input[name=floordest]")
+            if (aptoDest == 5 || aptoDest == 6) {
+                aptoNumDest.disabled = false
+            } else {
+                aptoNumDest.disabled = true
+            }
+        }
+
+        document
+            .querySelector("select[name=subject2]")
+            .addEventListener("change", apartmentDest)
+    </script>
 
 </body>
 
