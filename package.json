@@ -4,7 +4,7 @@
     "version": "4.2.2",
     "scripts": {
         "prestart": "npm i",
-        "start": "node src/server.js"
+        "start": "node index.js"
     },
     "description": "A simple business HTML landing page built with Bootstrap",
     "keywords": [
