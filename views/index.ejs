@@ -70,6 +70,7 @@
         <div class="row">
             <div class="col-md-8 mb-5">
                 <h2>Quem somos</h2>
+                <input value="<%= cliente.budgetSent %>" type="text" hidden name="sent">
                 <hr>
                 <p>A Villa Transporte atua no mercado de Carretos, Fretes, Mudanças e Transportes em Geral, com veículos de pequeno e médio porte atuando em toda região São Paulo, Interior, Litoral, atendemos algumas cidades do Paraná, Minas Gerais, Santa
                     Catarina de acordo com a sua necessidade com toda segurança, eficiência e total comodidade em seu frete, carreto, transporte ou mudança.</p>
@@ -438,6 +439,14 @@
     <!-- Bootstrap core JavaScript -->
     <script src="/jquery/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript" defer="defer">
+        var sent = document.querySelector("input[name=sent]").value
+
+        if (sent == "true") {
+            alert("Formulário enviado com sucesso!");
+        }
+    </script>
 
 </body>
 

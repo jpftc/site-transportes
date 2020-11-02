@@ -15,7 +15,7 @@ class SendMail {
 
         await transporter.sendMail({
             from: user,
-            to: "jpteixeira1308@gmail.com",
+            to: "villa.transportes@hotmail.com",
             subject: "***Novo orçamento!***",
             text: "Nome: " + cliente.name + " " + " " + "\n\r" +
                 "Telefone: " + cliente.tel + " " + " " + "\n\r" +

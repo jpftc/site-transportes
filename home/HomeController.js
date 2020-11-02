@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.render("index");
+    cliente = {}
+    res.render("index", { cliente: cliente });
 })
 
 module.exports = router;

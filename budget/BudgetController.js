@@ -34,11 +34,12 @@ router.post("/sendform", (req, res) => {
         ajudantes: req.body.ajudantes,
         qtdeajudantes: req.body.qtdeajudantes,
         packing: req.body.packing,
-        escadas: req.body.escadas
+        escadas: req.body.escadas,
+        budgetSent: true
     }
 
     SendMail.Send(cliente).then(info => {
-        res.redirect("/")
+        res.render("budget", { cliente: cliente })
     }).catch(err => {
         res.send(err);
     });
