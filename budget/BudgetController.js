@@ -7,7 +7,8 @@ router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
 router.get("/budget", (req, res) => {
-    res.render("budget");
+    cliente = {}
+    res.render("budget", { cliente: cliente });
 })
 
 router.post("/sendform", (req, res) => {

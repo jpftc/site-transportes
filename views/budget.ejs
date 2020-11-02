@@ -74,6 +74,7 @@
             <form method="POST" action="/sendform">
                 <div class="card-body">
                     <h3>Seus dados</h3>
+                    <input value="<%= cliente.budgetSent %>" type="text" hidden name="sent">
                     <label for="name">Nome*</label>
                     <input class="form-control" name="name" id="name" type="text" required><br>
                     <div class="row">
@@ -406,6 +407,14 @@
         document
             .querySelector("select[name=subject2]")
             .addEventListener("change", apartmentDest)
+    </script>
+
+    <script type="text/javascript" defer="defer">
+        var sent = document.querySelector("input[name=sent]").value
+
+        if (sent == "true") {
+            alert("Formulário enviado com sucesso!");
+        }
     </script>
 
 </body>
